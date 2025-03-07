@@ -15,17 +15,29 @@ var gameResults = [
 function buildLeaderboard(results) {
     var leaderboard = {};
     results.forEach(function (result) {
-        if (leaderboard[result.winner]) {
-            leaderboard[result.winner]++;
-        }
-        else {
-            leaderboard[result.winner] = 1;
-        }
+        result.players.forEach(function (player) {
+            if (!leaderboard[player]) {
+                leaderboard[player] = { wins: 0, losses: 0 };
+            }
+            if (player === result.winner) {
+                leaderboard[player].wins++;
+            }
+            else {
+                leaderboard[player].losses++;
+            }
+        });
     });
-    return Object.keys(leaderboard).map(function (player) { return ({
-        player: player,
-        wins: leaderboard[player]
-    }); }).sort(function (a, b) { return b.wins - a.wins; });
+    return Object.keys(leaderboard).map(function (player) {
+        var _a = leaderboard[player], wins = _a.wins, losses = _a.losses;
+        var totalGames = wins + losses;
+        var average = totalGames > 0 ? wins / totalGames : 0;
+        return {
+            player: player,
+            wins: wins,
+            losses: losses,
+            average: average
+        };
+    }).sort(function (a, b) { return b.wins - a.wins; });
 }
 var leaderboard = buildLeaderboard(gameResults);
 console.log(leaderboard);
