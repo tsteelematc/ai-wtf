@@ -1,0 +1,23 @@
+{
+  "name": "ai-wtf",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/tsteelematc/ai-wtf#readme",
+  "bugs": {
+    "url": "https://github.com/tsteelematc/ai-wtf/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsteelematc/ai-wtf.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "esmodule",
+  "main": "leaderboard.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  }
+}
